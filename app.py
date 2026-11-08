@@ -464,7 +464,16 @@ elif choice == "Games":
                         (uid, gid, price)
                     )
 
-                    # Trigger will auto-insert into GameCollection!
+                    # 3️⃣ Add to collection
+                    safe_execute(conn5,
+                        """
+                        INSERT INTO GameCollection (user_id, game_id, status)
+                        VALUES (%s, %s, 'Wishlist')
+                        ON DUPLICATE KEY UPDATE status='Wishlist'
+                        """,
+                        (uid, gid)
+                    )
+
                     conn5.close()
 
                     st.success(f"🎉 Purchased '{game_choice}' successfully!")
@@ -930,8 +939,6 @@ elif choice == "Cart":
 
     conn = get_connection()
     try:
-        st.write("DEBUG: Loading cart...")
-
         # Fetch cart items
         cart_df = safe_read_sql("""
             SELECT c.cart_id, g.title, g.price, c.item_id AS game_id
@@ -951,8 +958,6 @@ elif choice == "Cart":
 
         # BUY ALL
         if st.button("Buy All"):
-            st.write("DEBUG: Buy button pressed")
-
             # Fetch wallet
             wallet_df = safe_read_sql(
                 "SELECT wallet_balance FROM User WHERE user_id=%s",
