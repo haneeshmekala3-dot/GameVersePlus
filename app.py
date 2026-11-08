@@ -1084,9 +1084,9 @@ elif choice == "About":
             <li>Data analytics and visualization</li>
         </ul>
 
-        <h2 style='color:#00BFFF;'>👨‍💻 Developer</h2>
+        <h2 style='color:#00BFFF;'>👨‍💻 Developers & Contributors</h2>
         <p>
-            Built with ❤️ by <b>Jaswanth,saketh,umesh,tanoj,bhargav</b>  
+            Built with ❤️ by <b>Haneesh Mekala, Yogi Abhilash, Jaswanth, Saketh, Umesh, Tanoj, Bhargav</b>  
             — A complete end-to-end implementation showcasing DBMS, backend logic, UI design, and real-world system behavior.
         </p>
 
