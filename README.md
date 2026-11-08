@@ -129,7 +129,6 @@ Open [http://localhost:8501](http://localhost:8501) in your browser.
 
 ## 👥 Contributors
 
-- **Haneesh Mekala** ([@haneeshmekala3-dot](https://github.com/haneeshmekala3-dot)) — Project Lead & Developer
-- **Yogi Abhilash** ([@Yogyabhilash](https://github.com/Yogyabhilash)) — Contributor & Collaborator
-- **Jaswanth, Saketh, Umesh, Tanoj, Bhargav** — DBMS Design & Research Team
+- **Haneesh Mekala** ([@haneeshmekala3-dot](https://github.com/haneeshmekala3-dot)) — Project Lead, Full-Stack Development & Cloud Deployment
+- **Yogyabhilash** ([@Yogyabhilash](https://github.com/Yogyabhilash)) — Database Architecture, Schema Design & Analytics Engineering
 

@@ -1086,8 +1086,8 @@ elif choice == "About":
 
         <h2 style='color:#00BFFF;'>👨‍💻 Developers & Contributors</h2>
         <p>
-            Built with ❤️ by <b>Haneesh Mekala, Yogi Abhilash, Jaswanth, Saketh, Umesh, Tanoj, Bhargav</b>  
-            — A complete end-to-end implementation showcasing DBMS, backend logic, UI design, and real-world system behavior.
+            Built with ❤️ by <b>Haneesh Mekala</b> and <b>Yogyabhilash</b>  
+            — A complete end-to-end implementation showcasing DBMS architecture, backend logic, UI design, and real-world system behavior.
         </p>
 
         <br>

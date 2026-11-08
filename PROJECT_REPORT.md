@@ -2,7 +2,7 @@
 
 **Course:** Database Management Systems (DBMS) Laboratory  
 **Project Name:** GameVerse+ (Gaming Platform & Analytics Hub)  
-**Authors & Contributors:** Haneesh Mekala ([@haneeshmekala3-dot](https://github.com/haneeshmekala3-dot)), Yogi Abhilash ([@Yogyabhilash](https://github.com/Yogyabhilash)), Jaswanth, Saketh, Umesh, Tanoj, Bhargav  
+**Authors & Contributors:** Haneesh Mekala ([@haneeshmekala3-dot](https://github.com/haneeshmekala3-dot)) and Yogyabhilash ([@Yogyabhilash](https://github.com/Yogyabhilash))  
 **Live Application:** [https://gameverseplus-6l2rpdkppknw4ymzqzchxb.streamlit.app/](https://gameverseplus-6l2rpdkppknw4ymzqzchxb.streamlit.app/)  
 **GitHub Repository:** [https://github.com/haneeshmekala3-dot/GameVersePlus](https://github.com/haneeshmekala3-dot/GameVersePlus)  
 
