@@ -1,6 +1,6 @@
 # 🎮 GameVerse+
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://gameverseplus.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://gameverseplus-6l2rpdkppknw4ymzqzchxb.streamlit.app/)
 [![Python](https://img.shields.io/badge/Python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue.svg)](https://www.python.org/)
 [![Database](https://img.shields.io/badge/Database-MySQL%20%2F%20TiDB-orange.svg)](https://tidbcloud.com/)
 [![Tests](https://img.shields.io/badge/Tests-12%2F12%20Passing-brightgreen.svg)](tests/test_components.py)
@@ -11,7 +11,7 @@
 
 ## 🌐 Live Deployment Links
 
-- **🚀 Live Web Application:** **[https://gameverseplus.streamlit.app/](https://gameverseplus.streamlit.app/)**
+- **🚀 Live Web Application:** **[https://gameverseplus-6l2rpdkppknw4ymzqzchxb.streamlit.app/](https://gameverseplus-6l2rpdkppknw4ymzqzchxb.streamlit.app/)**
 - **💻 GitHub Source Repository:** **[https://github.com/haneeshmekala3-dot/GameVersePlus](https://github.com/haneeshmekala3-dot/GameVersePlus)**
 
 ---
