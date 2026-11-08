@@ -41,7 +41,7 @@ def login_user(username, password):
     """, conn, params=(username,))
     conn.close()
 
-    if not df.empty and check_hash(password, df['password_hash'][0]):
+    if not df.empty and check_hash(password, df['password_hash'].iloc[0]):
         return df.iloc[0]
     else:
      return None

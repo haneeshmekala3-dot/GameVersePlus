@@ -191,9 +191,13 @@ hr {
 
 # Fetch wallet balance
 conn = get_connection()
-user_id = st.session_state.user["user_id"]
-wallet = pd.read_sql("SELECT wallet_balance FROM User WHERE user_id=%s", conn, params=(user_id,)).iloc[0][0]
-conn.close()
+user_id = st.session_state.user.get("user_id") if st.session_state.user else None
+wallet = 0.0
+if conn and user_id is not None:
+    wallet_df = safe_read_sql("SELECT wallet_balance FROM User WHERE user_id=%s", conn, params=(int(user_id),))
+    if not wallet_df.empty and "wallet_balance" in wallet_df.columns:
+        wallet = float(wallet_df["wallet_balance"].iloc[0])
+    conn.close()
 
 st.markdown(f"""
     <div style="
@@ -223,7 +227,7 @@ with st.sidebar:
             notif_count = 0
         else:
             notif_df = safe_read_sql("SELECT COUNT(*) AS cnt FROM Notification WHERE user_id=%s AND is_read=FALSE;", conn, params=(int(uid),))
-            notif_count = int(notif_df["cnt"][0]) if not notif_df.empty else 0
+            notif_count = int(notif_df["cnt"].iloc[0]) if not notif_df.empty else 0
     finally:
         if conn:
             conn.close()
@@ -281,11 +285,17 @@ if choice == "Home":
 
     conn = get_connection()
     try:
-        total_games = safe_read_sql("SELECT COUNT(*) AS count FROM Game", conn)["count"][0]
-        total_users = safe_read_sql("SELECT COUNT(*) AS count FROM User", conn)["count"][0]
-        total_achievements = safe_read_sql("SELECT COUNT(*) AS count FROM Achievement", conn)["count"][0]
+        games_cnt_df = safe_read_sql("SELECT COUNT(*) AS count FROM Game", conn)
+        total_games = int(games_cnt_df["count"].iloc[0]) if not games_cnt_df.empty else 0
+
+        users_cnt_df = safe_read_sql("SELECT COUNT(*) AS count FROM User", conn)
+        total_users = int(users_cnt_df["count"].iloc[0]) if not users_cnt_df.empty else 0
+
+        ach_cnt_df = safe_read_sql("SELECT COUNT(*) AS count FROM Achievement", conn)
+        total_achievements = int(ach_cnt_df["count"].iloc[0]) if not ach_cnt_df.empty else 0
+
         avg_price_df = safe_read_sql("SELECT ROUND(AVG(price),2) AS avg_price FROM Game", conn)
-        avg_price = float(avg_price_df["avg_price"][0]) if not avg_price_df.empty and avg_price_df["avg_price"][0] is not None else 0.0
+        avg_price = float(avg_price_df["avg_price"].iloc[0]) if not avg_price_df.empty and avg_price_df["avg_price"].iloc[0] is not None else 0.0
 
         col1, col2, col3, col4 = st.columns(4)
         col1.metric("🎮 Total Games", int(total_games))
@@ -359,9 +369,9 @@ elif choice == "Profile":
         """, conn, params=(int(user_id), int(user_id), int(user_id)))
         if not stats.empty:
             col1, col2, col3 = st.columns(3)
-            col1.metric("🎮 Games Owned", int(stats["GamesOwned"][0]))
-            col2.metric("🏆 Achievements", int(stats["Achievements"][0]))
-            col3.metric("💬 Reviews", int(stats["Reviews"][0]))
+            col1.metric("🎮 Games Owned", int(stats["GamesOwned"].iloc[0]))
+            col2.metric("🏆 Achievements", int(stats["Achievements"].iloc[0]))
+            col3.metric("💬 Reviews", int(stats["Reviews"].iloc[0]))
     finally:
         conn.close()
 
@@ -407,7 +417,7 @@ elif choice == "Games":
             )
             conn2.close()
 
-            wallet = float(wallet_df.iloc[0][0])
+            wallet = float(wallet_df["wallet_balance"].iloc[0]) if not wallet_df.empty else 0.0
 
             st.markdown(f"💰 **Price:** ₹{price} | 🧍 Your Wallet: **₹{wallet}**")
 
@@ -964,7 +974,7 @@ elif choice == "Cart":
                 conn, params=(uid,)
             )
 
-            wallet = float(wallet_df["wallet_balance"][0])
+            wallet = float(wallet_df["wallet_balance"].iloc[0]) if not wallet_df.empty else 0.0
 
             if wallet < total_price:
                 st.error("❌ Not enough balance.")
